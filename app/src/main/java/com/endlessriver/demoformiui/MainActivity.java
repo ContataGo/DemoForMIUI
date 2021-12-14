@@ -10,6 +10,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     TextView mInfo;
+    private ToolUtil mToolUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d("MainActivity","onCreate() called");
         setContentView(R.layout.activity_main);
         mInfo = (TextView) findViewById(R.id.info);
+        mToolUtil = new ToolUtil();
     }
 
     @Override
@@ -62,14 +64,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void startClick(View v){
         Log.d("MainActivity","startLockTask() clicked");
+        mToolUtil.setContent("clicked");
         startLockTask();
         mInfo.setText("startLockTask() clicked and actived");
     }
 
     public void stopClick(View v){
         Log.d("MainActivity","stopLockTask() clicked");
+        addFunction();
         stopLockTask();
         mInfo.setText("stopLockTask() clicked and actived");
+    }
+
+    public void addFunction(){
+        Log.d("TestSVN","new function respond: " + mToolUtil.getContent());
     }
 
 }
